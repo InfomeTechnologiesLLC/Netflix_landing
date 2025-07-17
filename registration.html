@@ -3,286 +3,305 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Netflix Event Registration</title>
+    <title>Wednesday Season 2 Screening - Registration</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background: url('https://source.unsplash.com/random/1920x1080/?netflix,movie') no-repeat center center fixed;
-            background-size: cover;
-            color: white;
-            min-height: 100vh;
-            position: relative;
+        @font-face {
+            font-family: 'BemboStd';
+            src: url('asset/fonts/Bembo-Std-Font/BemboStd-Bold.otf') format('otf'),
+                 url('asset/fonts/Bembo-Std-Font/BemboStd-Bold.otf') format('otf');
+            font-weight: bold;
+            font-style: normal;
+            font-display: swap;
         }
         
-        body::before {
-            content: '';
+        @font-face {
+            font-family: 'BemboStd';
+            src: url('asset/fonts/Bembo-Std-Font/BemboStd.otf') format('otf'),
+                 url('asset/fonts/Bembo-Std-Font/BemboStd.otf') format('otf');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'BemboStd';
+            src: url('asset/fonts/Bembo-Std-Font/BemboStd-SemiboldItalic.otf') format('otf'),
+                 url('asset/fonts/Bembo-Std-Font/BemboStd-SemiboldItalic.otf') format('otf');
+            font-weight: normal;
+            font-style: italic;
+            font-display: swap;
+        }
+        
+        :root {
+            --text-light: #f8f9fa;
+            --accent-red: #d90429;
+            --dark-bg: rgb(2, 3, 12);
+        }
+        
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'BemboStd', serif;
+            color: var(--text-light);
+            background-color: #000;
+            overflow-x: hidden;
+        }
+        
+        p {
+            letter-spacing: 2px;
+            font-size: .6rem;
+        }
+        
+        .registration-container {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+        }
+        
+        /* Image Section */
+        .image-section {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .image-section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        
+        .image-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: -1;
+            background: linear-gradient(90deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%);
         }
         
-        .container {
-            padding-top: 3rem;
-            padding-bottom: 3rem;
+        /* Form Section */
+        .form-section {
+            flex: 1;
+            background-color: var(--dark-bg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 5%;
+            position: relative;
+            overflow-y: auto;
         }
         
-        .netflix-logo {
-            font-size: 4rem;
-            font-weight: 700;
-            color: #e50914;
-            margin-bottom: 2rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-        
-        .registration-card {
-            background-color: rgba(0, 0, 0, 0.8);
-            border-radius: 10px;
-            padding: 3rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        h1 {
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: #e50914;
+        .form-header {
             text-align: center;
+            margin-bottom: 0rem;
         }
         
-        .divider {
-            height: 3px;
-            background-color: #e50914;
-            margin: 2rem auto;
-            width: 100px;
+        .wednesday-logo {
+            max-width: 60%;
+            margin: 0 auto 1rem;
+            display: block;
         }
         
         .event-info {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 0rem;
         }
         
-        .event-date {
-            font-size: 1.2rem;
-            font-weight: 700;
+        .date-time {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-size: .7rem;
         }
         
-        .event-location {
-            font-size: 1.1rem;
+        .dress-code {
+            color: var(--accent-red);
+            margin: 1rem 0;
+            font-size: 0.8rem;
+            text-align: center;
+        }
+        
+        .divider {
+            border-top: 1px solid #444;
+            margin: 1.5rem auto;
+            width: 80%;
+        }
+        
+        /* Registration Form */
+        .registration-form {
+            max-width: 400px;
+            margin: 0 auto;
+            width: 100%;
         }
         
         .form-control {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(30, 30, 30, 0.7);
             border: 1px solid #333;
             color: white;
+            border-radius: 0;
+            padding: 10px 15px;
+            margin-bottom: 1.5rem;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
         }
         
         .form-control:focus {
-            background-color: rgba(255, 255, 255, 0.2);
-            border-color: #e50914;
+            background-color: rgba(50, 50, 50, 0.7);
+            border-color: #555;
             color: white;
-            box-shadow: 0 0 0 0.25rem rgba(229, 9, 20, 0.25);
+            box-shadow: none;
+        }
+        
+        .form-label {
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            color: #aaa;
         }
         
         .submit-btn {
-            background-color: #e50914;
+            background-color: var(--accent-red);
+            color: white;
             border: none;
-            padding: 0.8rem 2rem;
-            font-weight: 700;
+            padding: 12px 0;
             width: 100%;
-            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-top: 0rem;
             transition: all 0.3s;
         }
         
         .submit-btn:hover {
-            background-color: #b2070f;
-            transform: translateY(-2px);
+            background-color: #9d0208;
         }
         
-        .back-link {
+        .netflix-logo {
+            max-width: 120px;
+            margin: 2rem auto 1rem;
             display: block;
+        }
+        
+        .footer-note {
+            font-size: 0.6rem;
             text-align: center;
-            margin-top: 1.5rem;
-            color: #aaa;
-            transition: color 0.3s;
+            opacity: 0.7;
+            margin-top: 1rem;
         }
         
-        .back-link:hover {
-            color: white;
-            text-decoration: none;
-        }
-        
-        .terms-section {
-            background-color: rgba(30, 30, 30, 0.7);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-top: 2rem;
-            max-height: 200px;
-            overflow-y: auto;
-        }
-        
-        .terms-title {
-            color: #e50914;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        
+        /* Mobile Layout */
         @media (max-width: 768px) {
-            .netflix-logo {
-                font-size: 3rem;
+            .registration-container {
+                flex-direction: column;
             }
             
-            .registration-card {
-                padding: 2rem;
+            .image-section {
+                height: 40vh;
+                flex: none;
+            }
+            
+            .form-section {
+                padding: 2rem 10%;
+                flex: none;
+                height: auto;
+            }
+            
+            .wednesday-logo {
+                max-width: 50%;
+            }
+            
+            .registration-form {
+                max-width: 100%;
             }
         }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .form-group {
+            animation: fadeIn 0.5s ease forwards;
+            opacity: 0;
+        }
+        
+        .form-group:nth-child(1) { animation-delay: 0.1s; }
+        .form-group:nth-child(2) { animation-delay: 0.2s; }
+        .form-group:nth-child(3) { animation-delay: 0.3s; }
+        .submit-btn { animation-delay: 0.4s; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="text-center">
-            <div class="netflix-logo">NETFLIX</div>
+    <div class="registration-container">
+        <div class="image-section">
+            <img src="asset/img/landing_wed.webp" alt="Wednesday Series">
+            <div class="image-overlay"></div>
         </div>
         
-        <div class="registration-card">
-            <h1>Event Registration</h1>
+        <div class="form-section">
+            <div class="form-header">
+                <img src="asset/img/wed_logo.webp" alt="Wednesday Logo" class="wednesday-logo">
+                <p>PRIVATE SCREENING REGISTRATION</p>
+            </div>
             
             <div class="event-info">
-                <p class="event-date">Saturday, December 7, 2024 at 8:00 PM</p>
-                <p class="event-location">Le Chateau mall, Jeddah, Saudi Arabia</p>
-                <p><strong>Dress Code:</strong> Chic Casual</p>
+                <p class="date-time">WEDNESDAY, SEPTEMBER 3<sup>rd</sup> 2025 AT 7:30 PM</p>
+                <p>B6, JAX DISTRICT AL DIRIYAH AL JADIDAH, RIYADH</p>
+                <!-- <p class="dress-code">DRESS CODE: DARK CASUAL</p> -->
             </div>
             
             <div class="divider"></div>
             
-            <form id="registrationForm">
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="firstName" class="form-label">First Name</label>
-                        <input type="text" class="form-control" id="firstName" required>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="lastName" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" id="lastName" required>
-                    </div>
+            <form class="registration-form">
+                <div class="form-group">
+                    <label for="fullName" class="form-label">FULL NAME</label>
+                    <input type="text" class="form-control" id="fullName" required>
                 </div>
                 
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email Address</label>
+                <div class="form-group">
+                    <label for="email" class="form-label">EMAIL ADDRESS</label>
                     <input type="email" class="form-control" id="email" required>
                 </div>
                 
-                <div class="mb-3">
-                    <label for="phone" class="form-label">Phone Number</label>
+                <div class="form-group">
+                    <label for="phone" class="form-label">PHONE NUMBER</label>
                     <input type="tel" class="form-control" id="phone" required>
                 </div>
                 
-                <div class="mb-3">
-                    <label for="guests" class="form-label">Number of Guests (including you)</label>
-                    <select class="form-select" id="guests" required>
-                        <option value="" selected disabled>Select number of guests</option>
-                        <option value="1">1 (Just me)</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                </div>
-                
-                <div class="mb-3">
-                    <label for="dietary" class="form-label">Dietary Requirements (if any)</label>
-                    <textarea class="form-control" id="dietary" rows="2"></textarea>
-                </div>
-                
-                <div class="mb-3">
-                    <label for="howHeard" class="form-label">How did you hear about this event?</label>
-                    <select class="form-select" id="howHeard">
-                        <option value="" selected disabled>Select an option</option>
-                        <option value="email">Email invitation</option>
-                        <option value="social">Social media</option>
-                        <option value="friend">Friend or colleague</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-                
-                <div class="terms-section">
-                    <h6 class="terms-title">Terms and Conditions</h6>
-                    <ol>
-                        <li>Registration for the event is mandatory for attendance.</li>
-                        <li>All attendees must adhere to the dress code (Chic Casual).</li>
-                        <li>Netflix reserves the right to refuse entry to anyone not complying with event rules.</li>
-                        <li>Photography and videography will be taking place during the event.</li>
-                        <li>By attending, you consent to being photographed/filmed for promotional purposes.</li>
-                        <li>Registration closes on November 28, 2024 - no late registrations will be accepted.</li>
-                        <li>You may bring a maximum of 4 guests (5 people total including yourself).</li>
-                        <li>Please inform us of any dietary requirements in advance.</li>
-                    </ol>
-                </div>
-                
-                <div class="form-check mt-3">
-                    <input class="form-check-input" type="checkbox" id="agreeTerms" required>
-                    <label class="form-check-label" for="agreeTerms">
-                        I agree to the terms and conditions above
-                    </label>
-                </div>
-                
-                <button type="submit" class="btn submit-btn">Complete Registration</button>
-                
-                <a href="index.html" class="back-link">
-                    <i class="fas fa-arrow-left me-2"></i>Back to Event Details
-                </a>
+                <button type="submit" class="btn submit-btn">CONFIRM ATTENDANCE</button>
             </form>
-        </div>
-    </div>
-
-    <!-- Success Modal -->
-    <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content bg-dark text-white">
-                <div class="modal-header border-secondary">
-                    <h5 class="modal-title text-success"><i class="fas fa-check-circle me-2"></i>Registration Successful</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Thank you for registering for our exclusive Netflix event!</p>
-                    <p>We've sent a confirmation email with all the details to your provided email address.</p>
-                    <p class="mt-3"><strong>Event Date:</strong> December 7, 2024 at 8:00 PM</p>
-                    <p><strong>Location:</strong> Le Chateau mall, Jeddah, Saudi Arabia</p>
-                </div>
-                <div class="modal-footer border-secondary">
-                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
-                    <a href="index.html" class="btn btn-outline-light">Back to Event Page</a>
-                </div>
-            </div>
+            
+         
+            
+      
         </div>
     </div>
 
     <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Form submission handling
-        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+        // Form animation on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const formGroups = document.querySelectorAll('.form-group');
+            formGroups.forEach(group => {
+                group.style.opacity = 1;
+                group.style.transform = 'translateY(0)';
+            });
+            
+            document.querySelector('.submit-btn').style.opacity = 1;
+        });
+        
+        // Form submission
+        document.querySelector('.registration-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            // Here you would typically send the form data to a server
-            // For this demo, we'll just show a success modal
-            
-            // Show success modal
-            var successModal = new bootstrap.Modal(document.getElementById('successModal'));
-            successModal.show();
-            
-            // Reset the form (optional)
-            // this.reset();
+            alert('Thank you for your registration! A confirmation will be sent to your email.');
+            this.reset();
         });
     </script>
 </body>
